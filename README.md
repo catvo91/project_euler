@@ -1,0 +1,1 @@
+my foray into beginner's javascript and logic. yay!. started 10/30
