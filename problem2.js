@@ -33,3 +33,28 @@ var fib = function()
 
 fib();
 
+
+// solution 2 - completed 10/31 12:00 pm
+
+var fib = [1, 2];
+var sum = 0;
+var limit = function(n) 
+{
+while (fib[(fib.length) - 1] + fib[(fib.length) - 2] <= n)
+{
+	fib.push( fib[(fib.length) - 1] + fib[(fib.length) - 2] )
+
+};
+console.log(fib);
+
+for (var x in fib)
+{ 
+	if (fib[x] % 2 === 0)
+	{
+		sum += fib[x];
+	}
+};
+console.log(sum);
+};
+
+limit(4000000);

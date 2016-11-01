@@ -1,0 +1,31 @@
+var primeCheck = true;
+var factors = [5,6,13];
+var primeNumbers = [];
+var isPrime = function()
+{
+	for (var y in factors)
+	{
+		for (var j = 2; j < factors[y]; j++)
+		{
+			if (factors[y] % j === 0)
+			{
+				console.log("Not prime!");
+				primeCheck = false;
+				return factors[y] % j
+			}
+			else if (factors[y] % j !== 0)
+			{
+				console.log("Prime!");
+				primeCheck = true;
+			}
+		}
+		if (primeCheck === true)
+		{
+			primeNumbers.push(factors[y]);
+		}
+	}
+};
+// problem has arisen, code stops after reaching a non-prime number. will contemplate some more later.
+isPrime();
+console.log(primeCheck);
+console.log(primeNumbers);
