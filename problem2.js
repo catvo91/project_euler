@@ -10,19 +10,19 @@
 
 //solution 1 - completed 10/31 at midnight - i realize this is pretty much a brute force method and there is undoubtedly a much more refined method to solve this. will attempt solving this with arrays tomorrow 
 
-var fib = function()
+var fib = function(n)
 {
 	var a = 1;
 	var b = 2;
 	var sum = 2;
-	for (var i = a; a + b <= 4000000; i++)
+	while (a + b < n)
 		{
 			var a = a + b;
+			var b = a + b;
 			if (a % 2 === 0)
 			{
 				sum += a;
 			}
-			var b = a + b;
 			if (b % 2 === 0)
 			{
 				sum += b;
@@ -31,7 +31,7 @@ var fib = function()
 		console.log(sum);
 }
 
-fib();
+fib(4000000);
 
 
 // solution 2 - completed 10/31 12:00 pm
