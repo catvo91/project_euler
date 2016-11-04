@@ -3,29 +3,37 @@
 // 2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
 // What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
 
-var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-// remove redundant factors
+//completed way past my bedtime once again ~('.')/ 11/4/15
 
-var numbers = [6, 7, 8, 9, 10]
+var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+// remove redundant factors -- possibly make a function to remove these redundant integers?
+
+var numbers = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+var check = [];
 var i = 0;
-var divisible = true;
+var divisible = x / i;
+var x = 20;
+var sum = 0;
 var multiples = function ()
-{	loop1:
-	for (var x = 20; x < 28; x += 2)
+{	
+	for (var x = 20; x < 1000000000; x += 20) // arbitrary x limit & x +=20 because that is the largest factor
 	{
-		while (i < numbers.length && divisible === true)
-		{
-				if (x % numbers[i] !== 0)
-				{
-					divisible = false;
-				}
-				else if (divisible === true)
-					{
-						i++;
-					}
-		}
-	continue loop1;
+		i = 0;
+		check = [];
+		sum = 0;
+		divisible = x % numbers[i];
+		while (i < numbers.length)
+		{	
+			divisible = x % numbers[i];
+			check.push(divisible);
+			sum += check[i];
+			i++
+			if (sum === 0 && check.length === numbers.length)
+			{
+				return x;
+			}
+		}	
 	}
-};
-
+}	
 multiples();
+
