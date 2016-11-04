@@ -16,6 +16,8 @@
 
 // x & largest have to be adjusted accordingly, along with y > upper limit (of 1000 here, cuz max of 3 integers)
 
+// ive been told continue labels are bad, but working with what i've learned so far!
+
 var largest = 998001; 
 var reverse = 0;
 var x = 999;
@@ -32,8 +34,8 @@ var palindrome = function()
 		}
 		else
 		{
-			while (i % x !== 0 && x/y > 0.8 && x/y < 1.2) // the ratios for x/y were only added for efficiency -- i figured x & y would be relatively close together since we were maxing out largest as the largest possible palindrome and both variables were starting basically from 1000. one being skewed as large or small would vice versa make the other variable small or large.
-			{
+			while (i % x !== 0) // the ratios for x/y were only added for efficiency -- i figured x & y would be relatively close together since we were maxing out largest as the largest possible palindrome and both variables were starting basically from 1000. one being skewed as large or small would vice versa make the other variable small or large.
+			{                   // realized the ratio was redundant with y > 1000; for this particular problem, y > 1000 is more efficent, as ou can have a number within the previoux 1.1 > x/y > 0.9 ratio with like, 1001 * 99 or so
 				x--
 				y = i / x;
 				if (y > 1000)
