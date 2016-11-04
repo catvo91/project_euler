@@ -1,6 +1,6 @@
-// problem 4 of projet euler A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
+// problem 4 of projet euler A palindromic number reads the same both ways. The i palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
 
-//Find the largest palindrome made from the product of two 3-digit numbers.
+//Find the i palindrome made from the product of two 3-digit numbers.
 
 //https://projecteuler.net/problem=4
 
@@ -14,51 +14,38 @@
 
 //this answer takes some computational user input, with understanding that a 3 digit integer x 3 digit interger would at max be 999 x 999 = 998001 and at smallest it would be 100 x 100 = 10000
 
-// x & largest have to be adjusted accordingly, along with y > upper limit (of 1000 here, cuz max of 3 integers)
+// x & i have to be adjusted accordingly, along with y > upper limit (of 1000 here, cuz max of 3 integers)
 
-// ive been told continue labels are bad, but working with what i've learned so far!
+// removed the labels
 
-var largest = 998001; 
-var reverse = 0;
-var x = 999;
-var y = largest / x;
+
 var palindrome = function()
-{	loop1:
-	for (var i = largest; i > 10000; i--)
+{	var reverse = 0;
+	var x = 999;
+	var y = i / x;
+	var z = 1;
+	for (var i = 998001; i > 100000; i--)
 	{
 		x = 999;
+		y = i / x;
+		z = 1;
 		reverse = parseInt(i.toString().split('').reverse().join(''));
-		if (i !== reverse)
+		while (i === reverse && y < 999)
 		{
-			continue loop1;
-		}
-		else
-		{
-			while (i % x !== 0) // the ratios for x/y were only added for efficiency -- i figured x & y would be relatively close together since we were maxing out largest as the largest possible palindrome and both variables were starting basically from 1000. one being skewed as large or small would vice versa make the other variable small or large.
-			{                   // realized the ratio was redundant with y > 1000; for this particular problem, y > 1000 is more efficent, as ou can have a number within the previoux 1.1 > x/y > 0.9 ratio with like, 1001 * 99 or so
-				x--
-				y = i / x;
-				if (y > 1000)
-				{
-					continue loop1;
+			y = i / x;
+			z = i % x;
+			if (z === 0)
+			{
+				return {
+					i: i,
+					x: x,
+					y: y,
 				}
 			}
-			if (i % x === 0)
-			{
-				largest = i;
-				y = largest / x;
-				return;
-			}
-			else
-			{
-				continue loop1;
-			}
+			x--;
 		}
 	}
 }
-palindrome();
-console.log(largest);
-console.log(reverse);
-console.log(x);
-console.log(y);
-console.log(x/y);
+var palindromeResult = palindrome();
+console.log(palindromeResult);
+

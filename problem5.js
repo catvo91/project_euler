@@ -5,35 +5,56 @@
 
 //completed way past my bedtime once again ~('.')/ 11/4/15
 
-var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-// remove redundant factors -- possibly make a function to remove these redundant integers?
+//added a function to remove redundant numbers from the prompt
 
-var numbers = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-var check = [];
-var i = 0;
-var divisible = x / i;
-var x = 20;
-var sum = 0;
-var multiples = function ()
-{	
+var notRedundant = function()
+{
+	var original = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+	var factors = 0;
+	var y = 0;
+	var numbers = [];
+	for (var x = 0; x < original.length; x++)
+	{
+		y = x + 1;
+		factors = 1
+		while (y < original.length && factors !== 0)
+		{
+			factors = original[y] % original[x];
+			y++;
+		}
+		if (factors !== 0)
+		{
+		numbers.push(original[x]);
+		}
+
+	}
+	return numbers;
+}
+
+var multiples = function (numbers)
+{	notRedundant();
+	var numbers = notRedundant();
+	var i = 0;
+	var divisible = x / i;
+	var sum = 0;
 	for (var x = 20; x < 1000000000; x += 20) // arbitrary x limit & x +=20 because that is the largest factor
 	{
 		i = 0;
-		check = [];
 		sum = 0;
-		divisible = x % numbers[i];
-		while (i < numbers.length)
+		divisible = 0;
+		while (i < numbers.length && divisible === 0)
 		{	
 			divisible = x % numbers[i];
-			check.push(divisible);
-			sum += check[i];
+			sum += divisible;
 			i++
-			if (sum === 0 && check.length === numbers.length)
-			{
-				return x;
-			}
 		}	
+		if (sum === 0)
+		{
+			return x;
+		}
 	}
 }	
 multiples();
+var multiplesResult = multiples();
+console.log(multiplesResult);
 
